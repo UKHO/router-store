@@ -13,7 +13,9 @@ export class RouterFeatureStateBuilder {
     return this._routerState;
   }
 
-  public withActivatedRoute(route: Partial<CustomRouterStoreState>): RouterFeatureStateBuilder {
+  public withActivatedRoute(
+    route: Partial<CustomRouterStoreState> & Pick<CustomRouterStoreState, 'params'>,
+  ): RouterFeatureStateBuilder {
     this._routerState.params = route.params;
     return this;
   }

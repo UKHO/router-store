@@ -16,6 +16,11 @@
     "paths": {
       "router-store": ["dist/router-store"],
       "router-store/*": ["dist/router-store/*"]
-    }
+    },
+    "strict": true,
+    "strictFunctionTypes": false,
+    "strictPropertyInitialization": false,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true
   }
 }
