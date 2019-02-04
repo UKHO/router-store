@@ -1,5 +1,7 @@
 # @ukho/router-store
 
+[![CircleCI](https://circleci.com/gh/UKHO/router-store.svg?style=svg)](https://circleci.com/gh/UKHO/router-store)
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 7.1.3.
 
 This project provides an `@ngrx/router-store` implementation including a custom state serialiser and an `@ngrx/store` selector. 

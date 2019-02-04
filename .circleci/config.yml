@@ -42,8 +42,11 @@ workflows:
     jobs:
       - deps
       - lint
-          requires: deps
+          requires:
+            - deps
       - test
-          requires: deps
+          requires:
+            - deps
       - build
-          requires: deps
+          requires:
+            - deps
