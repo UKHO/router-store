@@ -1,8 +1,12 @@
-version: 2
-jobs:
-  deps:
+version: 2.1
+executors:
+  node:
     docker:
       - image: circleci/node:10.15.0-stretch
+
+jobs:
+  deps:
+    executor: node
     steps:
       - checkout
       - restore_cache:
@@ -13,31 +17,40 @@ jobs:
           paths:
             - node_modules
   lint:
-    docker:
-      - image: circleci/node:10.15.0-stretch
+    executor: node
     steps:
       - checkout
       - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}
       - run: yarn run lint
   test:
-    docker:
-      - image: circleci/node:10.15.0-stretch
+    executor: node
     steps:
       - checkout
       - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}
       - run: yarn run test
   build:
-    docker:
-      - image: circleci/node:10.15.0-stretch
+    executor: node
     steps:
       - checkout
       - restore_cache:
           key: dependency-cache-{{ checksum "package.json" }}
       - run: yarn run build
+      - persist_to_workspace:
+          root: .
+          paths: dist
+  publish:
+    executor: node
+    steps:
+      - checkout
+      - attach_workspace:
+          at: .
+      - run: echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" >> ~/.npmrc
+      - run: npm publish --access=public
+
 workflows:
-  version: 2
+  version: 2.1
   default_workflow:
     jobs:
       - deps
@@ -50,3 +63,9 @@ workflows:
       - build:
           requires:
             - deps
+      - publish:
+          requires:
+            - build
+          filters:
+            branches:
+              only: master
