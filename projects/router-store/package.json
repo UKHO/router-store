@@ -8,8 +8,5 @@
     "@angular/router": "^7.2.0",
     "@ngrx/router-store": "^7.0.0",
     "@ngrx/store": "^7.0.0"
-  },
-  "publishConfig": {
-    "registry": "https://nexus-infra.mint.ukho.gov.uk:8443/repository/mint-npm-hosted"
   }
 }
