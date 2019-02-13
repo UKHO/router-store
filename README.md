@@ -1,7 +1,5 @@
 # @ukho/router-store
 
-# UKHO TS Codestyle
-
 [![npm version][npm-shield]][npm-url]
 [![circleci build][circle-shield]][circle-url]
 [![code style: prettier][prettier-shield]][prettier-url]
