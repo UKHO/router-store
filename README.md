@@ -1,5 +1,7 @@
 # @ukho/router-store
 
+PLEASE NOTE: This repository is no longer being actively maintained.
+
 [![npm version][npm-shield]][npm-url]
 [![circleci build][circle-shield]][circle-url]
 [![code style: prettier][prettier-shield]][prettier-url]
